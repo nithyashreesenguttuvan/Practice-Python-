@@ -23,3 +23,17 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 
 CODE:
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        sett=set()
+        mlen=0
+        j=0
+        
+        for i in range(len(s)):
+            while s[i] in sett:
+                sett.remove(s[j])
+                j+=1
+            sett.add(s[i])
+            mlen=max(mlen,i-j+1)
+        return mlen
